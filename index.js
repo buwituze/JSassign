@@ -40,15 +40,68 @@ sumEvenFib();
 // 3.  Largest Prime Factor: The Prime factors of 13195 are 5, 7, 13 and 29. What is the largest
 // prime factor of the number 600851475143?
 
-function largestPrimeFactor(number) {
+function largestPF(num) {
 
-}
+        let factor = 2;
+        while (factor <= num) {
+            if (num % factor === 0) {
+                num /= factor;
+            } else {
+                factor++;
+            }
+        }
+        return factor;
+    }
+
+    console.log(largestPF(600851475143));
+    
 
 // 4. Largest Palindrome Product: A palindromic number reads the same both ways.
 // The largest palindrome made from the product of two 2-digit numbers
 // is 9009=91×99. Find the largest palindrome made from the product of two 3-
-// digit numbers
+// digit numbers.
 
-function largestP(){
-    
+function isPalindrome(n) {
+    const str = n.toString();
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
 }
+
+let largestPalindrome = 0;
+
+for (let i = 100; i < 1000; i++) {
+    for (let j = 100; j < 1000; j++) {
+        let product = i * j;
+        if (isPalindrome(product) && product > largestPalindrome) {
+            largestPalindrome = product;
+        }
+    }
+}
+
+console.log("The largest palindrome:", largestPalindrome);
+
+
+// 5. Smallest Multiple:
+// 2520 is the smallest number that can be divided by each of the numbers
+// from 1 to 10 without any remainder. What is the smallest positive number that
+// is evenly divisible by all of the numbers from 1 to 20?
+
+function smallestMultiple() {
+    let number = 2520; 
+    while (true) {
+        let divisible = true;
+        for (let i = 11; i <= 20; i++) {
+            if (number % i !== 0) {
+                divisible = false;
+                break;
+            }
+        }
+        if (divisible) {
+            return number;
+        }
+
+        number += 2520; 
+    }
+}
+
+console.log(smallestMultiple());

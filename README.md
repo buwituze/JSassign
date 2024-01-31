@@ -1,0 +1,1 @@
+Correcting JS exercises
